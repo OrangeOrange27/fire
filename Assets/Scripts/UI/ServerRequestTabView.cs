@@ -35,8 +35,8 @@ namespace UI
             try
             {
                 var response = await Server.ServerAPI.SendEmpty();
-
-                _requestsAmountText.text = !string.IsNullOrEmpty(response) ? response : "0";
+                
+                _requestsAmountText.text = response != null ? response?.RequestCount.ToString() : "0";
             }
             catch (System.Exception ex)
             {

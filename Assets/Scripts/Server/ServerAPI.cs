@@ -19,10 +19,10 @@ namespace Server
             return response;
         }
         
-        public static async UniTask<string> SendEmpty()
+        public static async UniTask<ClickResponse> SendEmpty()
         {
             var url = $"{BaseUrl}/click";
-            var response = await ServerRequest.GetRequest<string>(url);
+            var response = await ServerRequest.GetRequest<ClickResponse>(url);
             return response;
         }
     }

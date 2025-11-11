@@ -1,4 +1,6 @@
 using System.Collections.Concurrent;
+using System.Text.Json;
+using Server;
 
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
@@ -40,7 +42,9 @@ app.MapGet("/api/click", async context =>
 
     var count = players.AddOrUpdate(token, 1, (_, current) => current + 1);
 
-    await context.Response.WriteAsync(count.ToString());
+    var response = new ClickResponse { RequestCount = count };
+
+    await context.Response.WriteAsync(JsonSerializer.Serialize(response));
 });
 
 app.Run();
