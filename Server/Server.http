@@ -1,0 +1,13 @@
+@Server_HostAddress = http://localhost:8080
+
+### Login
+POST {{Server_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+###
+
+### Send Empty Request (Click)
+GET {{Server_HostAddress}}/api/click
+UserToken: "16ByteSecretKey!"
+
+###
